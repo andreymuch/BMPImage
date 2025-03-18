@@ -74,7 +74,7 @@ void BMPImg::paintline(int x0,int y0,int x1,int y1) {
     }
 }
 void BMPImg::Load(const std::string& filename){
-    std::ifstream file(filename, std::ios::binary);
+    std::ifstream file("../../TestImage/" + filename + ".bmp", std::ios::binary);
     if (!file.is_open()) {
         throw std::runtime_error("Ошибка открытия файла!");
     }
@@ -116,7 +116,7 @@ void BMPImg::DrawCross(int x1, int y1, int x2, int y2){
     }
 }
 void BMPImg::Save(const std::string& filename){
-    std::ofstream outfile(filename, std::ios::binary);
+    std::ofstream outfile("../../OutImage/" + filename + ".bmp", std::ios::binary);
     outfile.write(reinterpret_cast<const char*>(buf.data()), buf.size());
 }
 BMPImg::BMPImg(std::string &filename){
