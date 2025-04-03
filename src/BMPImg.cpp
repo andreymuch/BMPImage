@@ -102,6 +102,7 @@ void BMPImg::Load(const std::string& filename){
     } else {
         throw std::runtime_error("Ошибка чтения из файла!");
     }
+    file.close();
 }
 bool BMPImg::validateCoords(int x, int y){
     return (x >= 0 && x < IHeader.width && y >= 0 && y < std::abs(IHeader.height));
@@ -118,6 +119,7 @@ void BMPImg::DrawCross(int x1, int y1, int x2, int y2){
 void BMPImg::Save(const std::string& filename){
     std::ofstream outfile("../../OutImage/" + filename + ".bmp", std::ios::binary);
     outfile.write(reinterpret_cast<const char*>(buf.data()), buf.size());
+    outfile.close();
 }
 BMPImg::BMPImg(std::string &filename){
     Load(filename);
